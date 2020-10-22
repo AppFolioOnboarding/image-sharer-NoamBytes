@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
     if is_saved
       redirect_to @image
     else
-      render "new"
+      render 'new'
     end
   end
 
