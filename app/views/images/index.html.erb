@@ -1,0 +1,13 @@
+<h1>
+  Image Sharer
+</h1>
+<a href="/images/new">New Image</a>
+<table>
+  <% @images.each do |image| %>
+    <tr>
+      <td>
+        <%= image_tag image.url %>
+      </td>
+    </tr>
+  <% end %>
+</table>

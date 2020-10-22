@@ -18,6 +18,6 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.order("created_at desc")
+    @images = Image.order('created_at desc')
   end
 end
