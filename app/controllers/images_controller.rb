@@ -16,4 +16,8 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
   end
+
+  def index
+    @images = Image.order("created_at desc")
+  end
 end
