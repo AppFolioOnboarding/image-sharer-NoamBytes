@@ -5,6 +5,7 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     get '/'
 
     assert_equal 200, status
-    assert_select 'h1', 'Hello'
+    assert_select 'h1', 'Image Sharer'
+    assert_select 'a[href=?]', '/images/new'
   end
 end
