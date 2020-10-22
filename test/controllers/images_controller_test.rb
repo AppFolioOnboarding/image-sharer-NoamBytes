@@ -33,4 +33,34 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'img', 1
   end
+
+  test 'displays the correct number of images on homepage' do
+    Image.create(url: 'www.whatever.com')
+    Image.create(url: 'www.whatever.com')
+
+    get images_url
+
+    assert_equal 200, status
+    assert_select 'img', 2
+  end
+
+  test 'returns a 200 response on homepage' do
+    get images_url
+
+    assert_equal 200, status
+    assert_select 'h1', 'Image Sharer'
+    assert_select 'a[href=?]', '/images/new'
+    assert_select 'img', 0
+  end
+
+  test 'displays newest images first on homepage' do
+    Image.create(url: 'www.whatever.com')
+    lastimage = Image.create(url: 'http://google.com')
+
+    get images_url
+
+    assert_select 'img', 2 do |element|
+      assert_equal lastimage.url, element[0][:src]
+    end
+  end
 end
