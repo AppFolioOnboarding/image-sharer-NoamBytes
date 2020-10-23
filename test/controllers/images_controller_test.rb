@@ -33,7 +33,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_equal Image.last.url, 'www.google.com'
-    assert_equal Image.last.tag_list, ['website', 'google']
+    assert_equal Image.last.tag_list, %w[website google]
     assert_redirected_to "/images/#{Image.last.id}"
   end
 
@@ -77,7 +77,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
       assert_equal last_image.url, elements[0][:src]
     end
     assert_select 'p' do |elements|
-      elements.each.with_index  do |element, i|
+      elements.each.with_index do |element, i|
         assert_equal all_tags[i], element.text
       end
     end
