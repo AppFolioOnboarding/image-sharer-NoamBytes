@@ -17,6 +17,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_equal Image.last.url, 'www.google.com'
+    assert_equal Image.last.tag_list, []
     assert_redirected_to "/images/#{Image.last.id}"
   end
 
@@ -24,6 +25,16 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Image.count') do
       post images_url, params: { image: { url: 'notavalidurl' } }
     end
+  end
+
+  def test_create__valid_url_with_tags
+    assert_difference('Image.count', 1) do
+      post images_url, params: { image: { url: 'www.google.com', tag_list: 'website, google' } }
+    end
+
+    assert_equal Image.last.url, 'www.google.com'
+    assert_equal Image.last.tag_list, ['website', 'google']
+    assert_redirected_to "/images/#{Image.last.id}"
   end
 
   def test_show
