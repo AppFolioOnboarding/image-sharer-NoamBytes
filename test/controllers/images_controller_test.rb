@@ -67,13 +67,19 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'displays newest images first on homepage' do
-    Image.create(url: 'www.whatever.com')
-    lastimage = Image.create(url: 'http://google.com')
+    Image.create(url: 'www.whatever.com', tag_list: 'whatever')
+    last_image = Image.create(url: 'http://google.com', tag_list: 'website, google')
+    all_tags = ['website, google', 'whatever']
 
     get images_url
 
-    assert_select 'img', 2 do |element|
-      assert_equal lastimage.url, element[0][:src]
+    assert_select 'img', 2 do |elements|
+      assert_equal last_image.url, elements[0][:src]
+    end
+    assert_select 'p' do |elements|
+      elements.each.with_index  do |element, i|
+        assert_equal all_tags[i], element.text
+      end
     end
   end
 end
