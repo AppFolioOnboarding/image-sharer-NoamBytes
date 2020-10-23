@@ -38,12 +38,13 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_show
-    image = Image.create(url: 'www.whatever.com')
+    image = Image.create(url: 'www.whatever.com', tag_list: 'whatever')
 
     get image_url(image.id)
 
     assert_response :success
     assert_select 'img', 1
+    assert_select 'p', 'whatever'
   end
 
   test 'displays the correct number of images on homepage' do
