@@ -21,6 +21,11 @@ class ImagesController < ApplicationController
     @images = Image.order('created_at desc')
   end
 
+  def search
+    @query = params[:id]
+    @images = Image.tagged_with(@query)
+  end
+
   def image_params
     params.require(:image).permit(:url, :tag_list)
   end
