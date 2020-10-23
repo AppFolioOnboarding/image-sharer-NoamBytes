@@ -1,7 +1,7 @@
 <h1>
   Image Sharer
 </h1>
-<a href="/images/new">New Image</a>
+<a href='/images/new'>New Image</a>
 <table>
   <% @images.each do |image| %>
     <tr>
@@ -10,8 +10,11 @@
       </td>
       <td>
         <% image.tag_list.each do |tag| %>
-          <a id="tag-link" href='<%= search_path tag %>'><%= tag %></a>
+          <a id='tag-link' href='<%= search_path tag %>'><%= tag %></a>
         <% end %>
+      </td>
+      <td>
+        <%= button_to 'Delete Image', { action: 'destroy', id: image.id }, method: :delete, data: { confirm: 'Are you sure?' }, form_class: 'delete-button' %>
       </td>
     </tr>
   <% end %>

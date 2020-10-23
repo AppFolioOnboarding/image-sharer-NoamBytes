@@ -121,5 +121,6 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
         assert_equal "/images/search/#{all_tags[i]}", element[:href]
       end
     end
+    assert_select '.delete-button', 2
   end
 end
