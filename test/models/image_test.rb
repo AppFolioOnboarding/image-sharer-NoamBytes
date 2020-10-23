@@ -26,4 +26,11 @@ class ImageTest < ActiveSupport::TestCase
     end
     assert_equal image.errors.messages[:url].first, "can't be blank"
   end
+
+  def test_add_tag
+    image = Image.new(url: 'http://whatever.com')
+    image.tag_list.add('randomwebsite')
+
+    assert_equal ['randomwebsite'], image.tag_list
+  end
 end
