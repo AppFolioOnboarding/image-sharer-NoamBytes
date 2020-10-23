@@ -68,6 +68,24 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'img', 0
   end
 
+  def test_destroy
+    image = Image.create(url: 'http://someotherwebsite.com', tag_list: 'website')
+
+    assert_difference('Image.count', -1) do
+      delete image_url(image.id)
+    end
+    assert_response :found
+    assert_redirected_to '/'
+    assert_nil Image.find_by(id: image.id)
+  end
+
+  def test_destroy__non_existent
+    delete image_url(9)
+
+    assert_response :unprocessable_entity
+    assert_equal 'ID not found and cannot be deleted', JSON.parse(response.body)['message']
+  end
+
   test 'displays the correct number of images on homepage' do
     Image.create(url: 'http://whatever.com')
     Image.create(url: 'http://whatever.com')

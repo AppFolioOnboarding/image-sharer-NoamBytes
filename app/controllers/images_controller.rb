@@ -26,6 +26,13 @@ class ImagesController < ApplicationController
     @images = Image.tagged_with(@query)
   end
 
+  def destroy
+    Image.find(params[:id]).destroy
+    redirect_to '/'
+  rescue ActiveRecord::RecordNotFound
+    render json: { 'message': 'ID not found and cannot be deleted' }, status: :unprocessable_entity
+  end
+
   def image_params
     params.require(:image).permit(:url, :tag_list)
   end
