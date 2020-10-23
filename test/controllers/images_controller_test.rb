@@ -47,6 +47,27 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'p', 'whatever'
   end
 
+  def test_search
+    Image.create(url: 'http://google.com', tag_list: 'website, google')
+    Image.create(url: 'http://someotherwebsite.com', tag_list: 'website')
+    Image.create(url: 'http://notawebsite.com', tag_list: 'nonwebsite')
+
+    get search_path('website')
+
+    assert_response :success
+    assert_select 'h1', 'Images tagged with website'
+    assert_select 'img', 2
+  end
+
+  def test_search__no_results
+    #if there are no images there will never be a result
+    get search_path('somequery')
+
+    assert_response :success
+    assert_select 'h1', 'No images were tagged with somequery'
+    assert_select 'img', 0
+  end
+
   test 'displays the correct number of images on homepage' do
     Image.create(url: 'www.whatever.com')
     Image.create(url: 'www.whatever.com')
@@ -69,16 +90,17 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   test 'displays newest images first on homepage' do
     Image.create(url: 'www.whatever.com', tag_list: 'whatever')
     last_image = Image.create(url: 'http://google.com', tag_list: 'website, google')
-    all_tags = ['website, google', 'whatever']
+    all_tags = ['website', 'google', 'whatever']
 
     get images_url
 
     assert_select 'img', 2 do |elements|
       assert_equal last_image.url, elements[0][:src]
     end
-    assert_select 'p' do |elements|
+    assert_select '#tag-link' do |elements|
       elements.each.with_index do |element, i|
         assert_equal all_tags[i], element.text
+        assert_equal "/images/search/#{all_tags[i]}", element[:href]
       end
     end
   end

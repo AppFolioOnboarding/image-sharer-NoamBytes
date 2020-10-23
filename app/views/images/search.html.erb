@@ -1,0 +1,14 @@
+<% if @images.empty? %>
+  <h1>No images were tagged with <%= @query %></h1>
+<% else %>
+  <h1>Images tagged with <%= @query %></h1>
+<% end %>
+<table>
+  <% @images.each do |image|%>
+    <tr>
+      <td>
+        <%= image_tag image.url %>
+      </td>
+    </tr>
+  <% end %>
+</table>
