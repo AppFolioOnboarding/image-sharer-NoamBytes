@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Image.create(url: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1557258847-chinese-evergreen-houseplant-1557258690.jpg?crop=0.883xw:0.887xh;0.0849xw,0.0821xh&resize=480:*')
+Image.create(url: 'https://cdn.shopify.com/s/files/1/0150/6262/products/the-sill_zz-plant_variant_medium_hyde_blush_1200x.jpg?v=1602014530')
+Image.create(url: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/yucca-cane-plant-in-a-pot-on-a-white-background-royalty-free-image-1580856558.jpg')
+Image.create(url: 'https://www.proflowers.com/blog/wp-content/uploads/2018/06/how-to-revive-a-plant-hero.jpg')
+Image.create(url: 'https://www.etonline.com/sites/default/files/images/2020-07/bloomscape_plants.jpg')
+Image.create(url: 'https://www.gardeningknowhow.com/wp-content/uploads/2010/01/jade-plant-1.jpg')
+Image.create(url: 'https://images-na.ssl-images-amazon.com/images/I/81g7NtpwkRL._AC_SL1500_.jpg')
+Image.create(url: 'https://cdn.shopify.com/s/files/1/1637/3125/files/FoliaCollective-PlantsToGo4-Header_1440x640.jpg?v=1584638344')
+Image.create(url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTpH9sSqEWjwQgQ4TUcPcNaVIgoaCijaJ0Caw&usqp=CAU')
+Image.create(url: 'https://cdn.shopify.com/s/files/1/0150/6262/articles/plant_detail_brand_color-2-044_2048x2048.jpg?v=1547147027')
+Image.create(url: 'https://images2.minutemediacdn.com/image/upload/c_crop,h_593,w_1054,x_140,y_0/v1588702629/shape/mentalfloss/94525-pixabay_sunflowers2.jpg?itok=5AfcSmR8')
+Image.create(url: 'https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/NexGen/ContentPage/indoor-plants-hero-mob.jpg')
+Image.create(url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTqTpO7HDahTad64FNhbq7r7FWJUJKIJUje7w&usqp=CAU')
+Image.create(url: 'https://media.architecturaldigest.com/photos/598dd880cb4a1b70eb61ac1e/16:9/w_2560%2Cc_limit/Entrance-Atrium-with-plant.jpg')
+Image.create(url: 'https://www.gannett-cdn.com/presto/2020/08/12/PTAL/bac65a61-6b36-4d40-900a-6c7a28cb143a-Cast-Iron-plant-growing-back.jpg')
+Image.create(url: 'https://www.stylist.co.uk/images/app/uploads/2019/03/22172018/retro-houseplant-trends-plants-interiors-2019-crop-1553275284-1600x1067.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress')
+Image.create(url: 'https://marvel-b1-cdn.bc0a.com/f00000000139987/www.gardeners.com/on/demandware.static/-/Library-Sites-SharedLibrary/default/dwbcb71971/Articles/Gardening/Hero_Thumbnail/8201-foxglove-dalmatian-peach.jpg')
+Image.create(url: 'https://www.thespruce.com/thmb/imCMPRwPzLBQG-DqqAMRraGP2XI=/1333x1000/smart/filters:no_upscale()/how-to-fertilize-houseplants-1902846-hero-5d69cb6473ce4e31813d21828188425e.JPG')
+Image.create(url: 'https://www.bostonmagazine.com/wp-content/uploads/sites/2/2019/11/house-plants-feature.jpg')
+Image.create(url: 'https://cdn.britannica.com/50/157550-050-56DA0685/Venus-flytrap-traps-insects.jpg')
