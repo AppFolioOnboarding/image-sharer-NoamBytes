@@ -8,6 +8,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, status
     assert_select 'h1', 'New Image'
     assert_select '#image_url'
+    assert_select '#image_tag_list'
   end
 
   def test_create__valid_url
