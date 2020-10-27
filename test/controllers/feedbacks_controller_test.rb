@@ -6,7 +6,7 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
       post api_feedbacks_url, params: { feedback: { name: 'SomeName', comments: 'blah blah' } }
     end
     assert_response :success
-    assert_equal JSON.parse(response.body), { 'message' => 'Feedback successfully saved!' }
+    assert_equal JSON.parse(response.body), 'message' => 'Feedback successfully saved!'
   end
 
   def test_create_invalid
@@ -14,6 +14,6 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
       post api_feedbacks_url, params: { feedback: { name: '', comments: '' } }
     end
     assert_response :unprocessable_entity
-    assert_equal JSON.parse(response.body), { 'message' => 'Feedback was unable to save' }
+    assert_equal JSON.parse(response.body), 'message' => 'Feedback was unable to save'
   end
 end

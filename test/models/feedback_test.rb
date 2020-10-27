@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FeedbackTest < ActiveSupport::TestCase
   def test_valid_name_and_comment
-    feedback = Feedback.new(name: 'SomeName', comments:'blah blah')
+    feedback = Feedback.new(name: 'SomeName', comments: 'blah blah')
 
     assert_difference('Feedback.count', 1) do
       feedback.save
